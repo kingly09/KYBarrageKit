@@ -55,7 +55,7 @@
 - (void)setupUI {
     // text
     _titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
-    _titleLabel.font = [UIFont systemFontOfSize:12.0];
+    _titleLabel.font = [UIFont systemFontOfSize:17.0];
     [self addSubview:_titleLabel];
     
     // button
@@ -64,7 +64,16 @@
     _voteButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
     [_voteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [_voteButton setTitle:@"Vote" forState:UIControlStateNormal];
+  
     [self addSubview:_voteButton];
+    
+    //imageView
+    _imageView  = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.origin.x,self.bounds.origin.y, 30, 30)];
+    _imageView.hidden = true;
+    [_imageView.layer setMasksToBounds:YES];
+    _imageView.layer.cornerRadius = 15;
+    [self addSubview:_imageView];
+    
 }
 
 // Add to SuperView and start scrolling
@@ -140,7 +149,6 @@
 - (void)calculateFrame {
     /* 1. setup UI  */
     _titleLabel.attributedText = _model.message;
-//    _titleLabel.textColor = _model.textColor;
 
     /* 2. determine barrage's type  */
     switch (_model.barrageType) {
@@ -150,7 +158,7 @@
             _voteButton.hidden = false;
             [_voteButton sizeToFit];
             CGRect frame = _voteButton.frame;
-            frame.origin.x = CGRectGetMaxX(_titleLabel.frame);
+            frame.origin.x = CGRectGetMaxX(_titleLabel.frame) + 5;
             frame.origin.y = CGRectGetMinY(_titleLabel.frame);
             frame.size.height = CGRectGetHeight(_titleLabel.frame);
             _voteButton.frame = frame;
@@ -158,16 +166,20 @@
             break;
          case KYBarrageDisplayTypeImage:
             /* text and image */
-            
+            if (_model.object !=nil) {
+               UIImage *img = (UIImage *)_model.object;
+               _imageView.image = img;
+            }
+            _imageView.hidden = false;
+            [_imageView sizeToFit];
+                        
             [_titleLabel sizeToFit];
-            _voteButton.hidden = false;
-            [_voteButton sizeToFit];
-            CGRect imageframe = _voteButton.frame;
-            imageframe.origin.x = CGRectGetMaxX(_titleLabel.frame);
-            imageframe.origin.y = CGRectGetMinY(_titleLabel.frame);
-            imageframe.size.height = CGRectGetHeight(_titleLabel.frame);
-            _voteButton.frame = imageframe;
-            self.bounds = CGRectMake(0, 0, CGRectGetWidth(_titleLabel.frame) + CGRectGetWidth(_voteButton.frame), CGRectGetHeight(_titleLabel.frame));
+             CGRect titleLabelframe = _titleLabel.frame;
+             titleLabelframe.origin.x = CGRectGetMaxX(_imageView.frame) + 5;
+             titleLabelframe.origin.y = CGRectGetMinY(_imageView.frame) + (_imageView.frame.size.height - titleLabelframe.size.height)/2;
+             _titleLabel.frame = titleLabelframe;
+            
+            self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame), CGRectGetHeight(_imageView.frame));
             break;
             
         case KYBarrageDisplayTypeOther:
@@ -177,6 +189,7 @@
         default:
             // --BarrageDisplayTypeDefault--
             _voteButton.hidden = true;
+            _imageView.hidden = true;
             [_titleLabel sizeToFit];
             self.bounds = _titleLabel.bounds;
             break;

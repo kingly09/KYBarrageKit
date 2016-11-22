@@ -42,6 +42,8 @@ typedef void(^AnimationDidStopBlock)(KYBarrageScene *scene);
 
 @property (strong, nonatomic) UIButton *voteButton;
 
+@property (strong, nonatomic) UIImageView *imageView;
+
 @property (copy, nonatomic) AnimationDidStopBlock animationDidStopBlock;
 
 - (void)scroll;

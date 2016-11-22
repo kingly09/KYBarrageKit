@@ -89,7 +89,8 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     
     KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
     m.displayLocation = KYBarrageDisplayLocationTypeDefault;
-    m.barrageType = KYBarrageDisplayTypeVote;
+    m.barrageType = KYBarrageDisplayTypeImage;
+    m.object = [UIImage imageNamed:@"digg_1"];
     return m;
 }
 

@@ -37,7 +37,7 @@
         self.message = [[NSMutableAttributedString alloc] initWithString:@""];
         self.author = nil;
         self.object = nil;
-        self.url = @"";
+       
     }
     return self;
 }
@@ -58,16 +58,6 @@
 
 - (instancetype)initWithBarrageContent:(NSMutableAttributedString *)message {
     return [self initWithNumberID:0 BarrageContent:message];
-}
-
-- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(NSMutableAttributedString *)message Author:(nullable id)author  withUrl:(NSString *)url{
-
-   KYBarrageModel *model = [[KYBarrageModel alloc] init];
-    model.numberID = numID;
-    model.message = message;
-    model.author = author;
-    model.url = url;
-    return model;
 }
 
 @end

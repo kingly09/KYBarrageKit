@@ -35,7 +35,6 @@ typedef NS_ENUM(NSInteger, KYBarrageStatusType) {
     KYBarrageStatusTypeClose,
 };
 
-// 弹幕的滚动速度,单位为秒
 // scroll speed of barrage,in seconds
 typedef NS_ENUM(NSInteger, KYBarrageDisplaySpeedType) {
     KYBarrageDisplaySpeedTypeDefault = 10,
@@ -44,7 +43,7 @@ typedef NS_ENUM(NSInteger, KYBarrageDisplaySpeedType) {
     KYBarrageDisplaySpeedTypeMostFast = 60,
 };
 
-//  弹幕滚动的方向
+//  The direction of the rolling barrage 
 typedef NS_ENUM(NSInteger, KYBarrageScrollDirection) {
     KYBarrageScrollDirectRightToLeft = 0,     /*  <<<<<   */
     KYBarrageScrollDirectLeftToRight = 1,     /*  >>>>>   */
@@ -70,10 +69,10 @@ typedef NS_ENUM(NSInteger, KYBarrageDisplayType) {
     KYBarrageDisplayTypeOther,        /* other        */
 };
 
-// 收到内存警告的清除策略
+// Clear policy for receiving memory warning
 typedef NS_ENUM(NSInteger, KYBarrageMemoryWarningMode) {
-    KYBarrageMemoryWarningModeHalf = 0, //清除一半
-    KYBarrageMemoryWarningModeAll,       //清空缓冲池
+    KYBarrageMemoryWarningModeHalf = 0,  //Clear hal
+    KYBarrageMemoryWarningModeAll,       //Clear ALL
 };
 
 

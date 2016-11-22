@@ -65,8 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
 // goal object
 @property (strong, nonatomic, nullable) id object;
 
-//  barrage's author  head portrait url
-@property (strong, nonatomic) NSString *url;
+//KYBarrageDisplayTypeImage and KYBarrageDisplayTypeVote need to set height
+@property (assign, nonatomic) float ky_hight;
+
 
 // barrage's textfont
 @property (copy, nonatomic) UIFont *font;
@@ -86,17 +87,6 @@ NS_ASSUME_NONNULL_BEGIN
  @return init  KYBarrageModel
  */
 - (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(NSMutableAttributedString *)message Author:(nullable id)author Object:(nullable id)object;
-
-/**
-  init  KYBarrageModel
-
-  @param numID barrage's id
-  @param message barrage's content
-  @param author barrage's author
-  @param url barrage's author  head portrait url
-  @return init  KYBarrageModel
- */
-- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(NSMutableAttributedString *)message Author:(nullable id)author withUrl:(NSString *)url;
 /**
   init  KYBarrageModel
 
