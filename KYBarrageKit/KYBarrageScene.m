@@ -154,6 +154,7 @@
     switch (_model.barrageType) {
         case KYBarrageDisplayTypeVote:
             // - voting type -
+            _imageView.hidden = YES;
             [_titleLabel sizeToFit];
             _voteButton.hidden = false;
             [_voteButton sizeToFit];
@@ -165,6 +166,8 @@
             self.bounds = CGRectMake(0, 0, CGRectGetWidth(_titleLabel.frame) + CGRectGetWidth(_voteButton.frame), CGRectGetHeight(_titleLabel.frame));
             break;
          case KYBarrageDisplayTypeImage:
+         
+            _voteButton.hidden = YES;
             /* text and image */
             if (_model.object !=nil) {
                UIImage *img = (UIImage *)_model.object;

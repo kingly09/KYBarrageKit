@@ -54,6 +54,10 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     _manager.refreshInterval = 1.0;
     [_manager startScroll];
     
+    
+
+
+    
 
 }
 
@@ -72,6 +76,24 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
 
 - (void)dealloc {
     [_manager toDealloc];
+}
+
+
+- (IBAction)sendBarrage:(id)sender {
+
+    //_manager被动接收弹幕
+    int a = arc4random() % 10000;
+    NSString *str = [NSString stringWithFormat:@"%d 呵呵哒",a];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
+    [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
+    
+    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
+    m.displayLocation = KYBarrageDisplayLocationTypeTop;
+    m.barrageType = KYBarrageDisplayTypeVote;
+    
+    [_manager showBarrageWithDataSource:m];
+
 }
 
 
@@ -99,7 +121,7 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     CGPoint touchPoint = [touch locationInView:self.view];
     [[_manager barrageScenes] enumerateObjectsUsingBlock:^(KYBarrageScene * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj.layer.presentationLayer hitTest:touchPoint]) {
-            /* if barrage's type is ` KYBarrageDisplayTypeVote `, add your code here*/
+            /* if barrage's type is ` KYBarrageDisplayTypeVote ` or `KYBarrageDisplayTypeImage`, add your code here*/
             NSLog(@"message = %@",obj.model.message.string);
         }
     }];
