@@ -26,7 +26,8 @@
 //
 
 #import "KYBarrageScene.h"
-
+#import <QuartzCore/QuartzCore.h>
+#import "KYBarrageManager.h"
 
 @implementation KYBarrageScene
 
@@ -45,6 +46,25 @@
        self.model = model;
     }
     return self;
+}
+
+- (void)dealloc {
+//    NSLog(@"scene dealloc");
+}
+
+- (void)setupUI {
+    // text
+    _titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
+    _titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [self addSubview:_titleLabel];
+    
+    // button
+    _voteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 12)];
+    _voteButton.hidden = true;
+    _voteButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [_voteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [_voteButton setTitle:@"Vote" forState:UIControlStateNormal];
+    [self addSubview:_voteButton];
 }
 
 // Add to SuperView and start scrolling
@@ -79,6 +99,7 @@
     goalFrame.origin = goalPoint;
         
     // Layer execution animation
+    
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     animation.delegate = self;
     animation.removedOnCompletion = true;
@@ -90,23 +111,9 @@
     [self.layer addAnimation:animation forKey:@"kAnimation_BarrageScene"];
 }
 
-- (void)dealloc {
-//    NSLog(@"scene dealloc");
-}
-
-- (void)setupUI {
-    // text
-    _titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
-    _titleLabel.font = [UIFont systemFontOfSize:12.0];
-    [self addSubview:_titleLabel];
-    
-    // button
-    _voteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 12)];
-    _voteButton.hidden = true;
-    _voteButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
-    [_voteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [_voteButton setTitle:@"Vote" forState:UIControlStateNormal];
-    [self addSubview:_voteButton];
+- (void)setModel:(KYBarrageModel *)model {
+    _model = model;
+    [self calculateFrame];
 }
 
 - (void)pause {
@@ -129,14 +136,13 @@
     [self removeFromSuperview];
 }
 
-
-#pragma mark - 计算Frame
+#pragma mark - Frame
 - (void)calculateFrame {
-    /* 1. setup UI (基础UI设置) */
+    /* 1. setup UI  */
     _titleLabel.attributedText = _model.message;
 //    _titleLabel.textColor = _model.textColor;
 
-    /* 2. determine barrage's type  (判断弹幕类型) */
+    /* 2. determine barrage's type  */
     switch (_model.barrageType) {
         case KYBarrageDisplayTypeVote:
             // - voting type -
@@ -170,7 +176,6 @@
             break;
         default:
             // --BarrageDisplayTypeDefault--
-            
             _voteButton.hidden = true;
             [_titleLabel sizeToFit];
             self.bounds = _titleLabel.bounds;
@@ -223,7 +228,6 @@
     
     return frame;
 }
-
 
 #pragma mark - AnimatonDelegate
 

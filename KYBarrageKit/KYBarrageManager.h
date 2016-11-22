@@ -27,13 +27,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "KYBarrageKit.h"
+
 #import "KYBarrageModel.h"
 #import "KYBarrageScene.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class KYBarrageScene;
 
 @protocol KYBarrageManagerDelegate <NSObject>
 

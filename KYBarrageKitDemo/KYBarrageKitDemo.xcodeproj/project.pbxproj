@@ -19,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BCEAEFDC1DE4486B0094D422 /* KYBarrageEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYBarrageEnum.h; sourceTree = "<group>"; };
 		BCFB00601DE42DA400E04090 /* KYBarrageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBarrageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFB00641DE42DA400E04090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCFB00661DE42DA400E04090 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -94,10 +95,11 @@
 			isa = PBXGroup;
 			children = (
 				BCFB007E1DE42F4900E04090 /* KYBarrageKit.h */,
-				BCFB007F1DE430A700E04090 /* KYBarrageManager.h */,
-				BCFB00801DE430A700E04090 /* KYBarrageManager.m */,
+				BCEAEFDC1DE4486B0094D422 /* KYBarrageEnum.h */,
 				BCFB00821DE4310500E04090 /* KYBarrageModel.h */,
 				BCFB00831DE4310500E04090 /* KYBarrageModel.m */,
+				BCFB007F1DE430A700E04090 /* KYBarrageManager.h */,
+				BCFB00801DE430A700E04090 /* KYBarrageManager.m */,
 				BCFB00851DE4312C00E04090 /* KYBarrageScene.h */,
 				BCFB00861DE4312C00E04090 /* KYBarrageScene.m */,
 			);
@@ -343,6 +345,7 @@
 				BCFB00791DE42DA400E04090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

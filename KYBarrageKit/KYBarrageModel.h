@@ -27,77 +27,90 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "KYBarrageKit.h"
+#import "KYBarrageEnum.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KYBarrageModel : NSObject
 
-//MARK: Barrage Model property
+//MARK: Model
 
 // barrage's id
 @property (assign, nonatomic) NSInteger numberID;
 
 //  barrage's time
-@property (copy, nonatomic,nullable) NSString *time;
+@property (strong, nonatomic) NSString *time;
 
 // barrage's type
-@property (assign, nonatomic)  KYBarrageDisplayType barrageType;
+@property (assign, nonatomic) KYBarrageDisplayType barrageType;
 
 // barrage's speed
-@property (assign, nonatomic)  KYBarrageDisplaySpeedType speed;
+@property (assign, nonatomic) KYBarrageDisplaySpeedType speed;
 
 // barrage's direction
-@property (assign, nonatomic)  KYBarrageScrollDirection direction;
+@property (assign, nonatomic) KYBarrageScrollDirection direction;
 
 // barage's location
-@property (assign, nonatomic)  KYBarrageDisplayLocationType displayLocation;
+@property (assign, nonatomic) KYBarrageDisplayLocationType displayLocation;
 
-// barrage's superView(The father of View barrage)
-@property (weak, nonatomic,nullable) UIView *bindView;
+//  barrage's superView
+@property (weak, nonatomic) UIView *bindView;
 
 // barrage's content
-@property (copy, nonatomic, nonnull) NSMutableAttributedString *message;
+@property (strong, nonatomic, nonnull) NSMutableAttributedString *message;
 
 // barrage's author
-@property (strong, nonatomic, nullable)  id author;
+@property (strong, nonatomic, nullable) id author;
 
-// barrage goal object
-@property (strong, nonatomic, nullable)  id  object;
+// goal object
+@property (strong, nonatomic, nullable) id object;
+
+//  barrage's author  head portrait url
+@property (strong, nonatomic) NSString *url;
 
 // barrage's textfont
 @property (copy, nonatomic) UIFont *font;
 
-//barrage's textColor
+// barrage's textColor
 @property (copy, nonatomic) UIColor *textColor;
 
 //MARK: Barrage initialization method
 
 /**
-  init  Barrage Model property
+ init  KYBarrageModel
 
  @param numID barrage's id
  @param message barrage's content
  @param author barrage's author
- @param object barrage goal object
- @return  Barrage Model property
+ @param object goal object
+ @return init  KYBarrageModel
  */
-- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(nullable NSMutableAttributedString *)message Author:(nullable id)author Object:(nullable id)object;
+- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(NSMutableAttributedString *)message Author:(nullable id)author Object:(nullable id)object;
 
 /**
- init  Barrage Model property
+  init  KYBarrageModel
 
- @param numID barrage's id
- @param message barrage's content
- @return Barrage Model property
+  @param numID barrage's id
+  @param message barrage's content
+  @param author barrage's author
+  @param url barrage's author  head portrait url
+  @return init  KYBarrageModel
  */
-- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(nullable NSMutableAttributedString *)message;
+- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(NSMutableAttributedString *)message Author:(nullable id)author withUrl:(NSString *)url;
+/**
+  init  KYBarrageModel
+
+  @param numID barrage's id
+  @param message barrage's content
+ @return init  KYBarrageModel
+ */
+- (instancetype)initWithNumberID:(NSInteger)numID BarrageContent:(NSMutableAttributedString *)message;
 
 /**
- init  Barrage Model property
+  init  KYBarrageModel
 
  @param message barrage's content
- @return  Barrage Model property
+ @return init  KYBarrageModel
  */
 - (instancetype)initWithBarrageContent:(NSMutableAttributedString *)message;
 

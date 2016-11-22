@@ -28,53 +28,6 @@
 #ifndef KYBarrageKit_h
 #define KYBarrageKit_h
 
-#define KYWeakself __weak typeof(self) weakSelf = self
-
-typedef NS_ENUM(NSInteger, KYBarrageStatusType) {
-    KYBarrageStatusTypeNormal = 0,
-    KYBarrageStatusTypePause,
-    KYBarrageStatusTypeClose,
-};
-
-// scroll speed of barrage,in seconds
-typedef NS_ENUM(NSInteger, KYBarrageDisplaySpeedType) {
-    KYBarrageDisplaySpeedTypeDefault = 10,
-    KYBarrageDisplaySpeedTypeFast = 20,
-    KYBarrageDisplaySpeedTypeFaster = 40,
-    KYBarrageDisplaySpeedTypeMostFast = 60
-};
-
-//  The direction of the rolling barrage
-typedef NS_ENUM(NSInteger, KYBarrageScrollDirection) {
-    KYBarrageScrollDirectRightToLeft = 0,     /*  <<<<<   */
-    KYBarrageScrollDirectLeftToRight = 1,     /*  >>>>>   */
-    KYBarrageScrollDirectBottomToTop = 2,     /*  ↑↑↑↑   */
-    KYBarrageScrollDirectTopToBottom = 3      /*  ↓↓↓↓   */
-};
-
-// location of barrage, `default` is global page
-typedef NS_ENUM(NSInteger, KYBarrageDisplayLocationType) {
-    KYBarrageDisplayLocationTypeDefault = 0,
-    KYBarrageDisplayLocationTypeTop = 1,
-    KYBarrageDisplayLocationTypeCenter = 2,
-    KYBarrageDisplayLocationTypeBottom = 3,
-    KYBarrageDisplayLocationTypeHidden
-};
-
-//  type of barrage
-typedef NS_ENUM(NSInteger, KYBarrageDisplayType) {
-    KYBarrageDisplayTypeDefault = 0,  /* only text   */
-    KYBarrageDisplayTypeImage,        /* text and image */
-    KYBarrageDisplayTypeVote,         /* text and vote */
-    KYBarrageDisplayTypeOther         /* other         */
-};
-
-// Clear policy for receiving memory warning
-typedef NS_ENUM(NSInteger, KYBarrageMemoryWarningMode) {
-    KYBarrageMemoryWarningModeHalf = 0,  //Remove / half
-    KYBarrageMemoryWarningModeAll       //empty buffer pool
-};
-
 #import "KYBarrageManager.h"
 
 

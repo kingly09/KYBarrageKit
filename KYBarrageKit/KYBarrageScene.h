@@ -29,14 +29,14 @@
 #import "KYBarrageModel.h"
 
 @class KYBarrageManager;
+
 @class KYBarrageScene;
-@class KYBarrageModel;
 
 typedef void(^AnimationDidStopBlock)(KYBarrageScene *scene);
 
 @interface KYBarrageScene : UIView <CAAnimationDelegate> 
 
-@property (strong, nonatomic) KYBarrageModel *model;
+@property (copy, nonatomic) KYBarrageModel *model;
 
 @property (strong, nonatomic) UILabel *titleLabel;
 

@@ -28,7 +28,14 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#import "KYBarrageKit.h"
+
+
+typedef void(^MultiParmsBlock)(NSString *p1, ...);
+
+@interface ViewController () <KYBarrageManagerDelegate>
+
+@property (strong, nonatomic) KYBarrageManager *manager;
 
 @end
 
@@ -37,13 +44,75 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
+   self.view.backgroundColor = [UIColor whiteColor];
+  
+    _manager = [KYBarrageManager manager];
+    _manager.bindingView = self.view;
+    _manager.delegate = self;
+    _manager.scrollSpeed = 30;
+    _manager.memoryMode = KYBarrageMemoryWarningModeHalf;
+    _manager.refreshInterval = 1.0;
+    [_manager startScroll];
+    
+
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [_manager closeBarrage];
+    [super viewWillDisappear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
+
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+   // When you receive a memory warning，clean the barrage's cache
+    [_manager didReceiveMemoryWarning];
 }
+
+- (void)dealloc {
+    [_manager toDealloc];
+}
+
+
+#pragma mark - BarrageManagerDelegate
+- (id)barrageManagerDataSource {
+    
+    _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
+    _manager.displayLocation = KYBarrageDisplayLocationTypeDefault;
+
+    int a = arc4random() % 10000;
+    NSString *str = [NSString stringWithFormat:@"%d hi",a];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
+    [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
+    
+    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
+    m.displayLocation = KYBarrageDisplayLocationTypeDefault;
+    m.barrageType = KYBarrageDisplayTypeVote;
+    return m;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self.view];
+    [[_manager barrageScenes] enumerateObjectsUsingBlock:^(KYBarrageScene * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.layer.presentationLayer hitTest:touchPoint]) {
+            /* if barrage's type is ` KYBarrageDisplayTypeVote `, add your code here*/
+            NSLog(@"message = %@",obj.model.message.string);
+        }
+    }];
+}
+
+UIColor * RandomColor() {
+    float a = (arc4random() % 255) / 255.0;
+    float b = (arc4random() % 255) / 255.0;
+    float c = (arc4random() % 255) / 255.0;
+    
+    return [UIColor colorWithRed:a green:b blue:c alpha:1.0];
+}
+
+
 
 
 @end

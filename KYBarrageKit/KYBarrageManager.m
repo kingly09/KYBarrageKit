@@ -26,6 +26,8 @@
 //
 
 #import "KYBarrageManager.h"
+#define Weakself __weak typeof(self) weakSelf = self
+
 
 @interface KYBarrageManager ()
 
@@ -41,7 +43,7 @@
 
 @implementation KYBarrageManager
 
-#pragma mark - create manager(初始化方法)
+#pragma mark - create manager
 
 // singleton 
 static KYBarrageManager *instance;
@@ -130,7 +132,7 @@ static KYBarrageManager *instance;
                     KYBarrageScene *scene = [[KYBarrageScene alloc] initWithFrame:CGRectZero Model:model];
                     [_barrageScene addObject:scene];
                     [_bindingView addSubview:scene];
-                    KYWeakself;
+                    Weakself;
                     scene.animationDidStopBlock = ^(KYBarrageScene *scene_){
                         [weakSelf.cachePool addObject:scene_];
                         [weakSelf.barrageScene removeObject:scene_];
@@ -140,7 +142,7 @@ static KYBarrageManager *instance;
                     
                 }else {
                     //From the buffer pool to Scene, it will be removed from the buffer pool
-                    NSLog(@"get from cache");
+                    //                    NSLog(@"get from cache");
                     KYBarrageScene *scene =  _cachePool.firstObject;
                     [_barrageScene addObject:scene];
                     [_cachePool removeObjectAtIndex:0];
@@ -160,7 +162,7 @@ static KYBarrageManager *instance;
                         KYBarrageScene *scene = [[KYBarrageScene alloc] initWithFrame:CGRectZero Model:model];
                         [_barrageScene addObject:scene];
                         [_bindingView addSubview:scene];
-                        KYWeakself;
+                        Weakself;
                         scene.animationDidStopBlock = ^(KYBarrageScene *scene_){
                             [weakSelf.cachePool addObject:scene_];
                             [weakSelf.barrageScene removeObject:scene_];
