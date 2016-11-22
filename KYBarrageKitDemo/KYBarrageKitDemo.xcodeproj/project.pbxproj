@@ -13,6 +13,9 @@
 		BCFB006E1DE42DA400E04090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCFB006C1DE42DA400E04090 /* Main.storyboard */; };
 		BCFB00701DE42DA400E04090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCFB006F1DE42DA400E04090 /* Assets.xcassets */; };
 		BCFB00731DE42DA400E04090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCFB00711DE42DA400E04090 /* LaunchScreen.storyboard */; };
+		BCFB00811DE430A700E04090 /* KYBarrageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00801DE430A700E04090 /* KYBarrageManager.m */; };
+		BCFB00841DE4310500E04090 /* KYBarrageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00831DE4310500E04090 /* KYBarrageModel.m */; };
+		BCFB00871DE4312C00E04090 /* KYBarrageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00861DE4312C00E04090 /* KYBarrageScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,13 @@
 		BCFB006F1DE42DA400E04090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCFB00721DE42DA400E04090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCFB00741DE42DA400E04090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCFB007E1DE42F4900E04090 /* KYBarrageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYBarrageKit.h; sourceTree = "<group>"; };
+		BCFB007F1DE430A700E04090 /* KYBarrageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBarrageManager.h; sourceTree = "<group>"; };
+		BCFB00801DE430A700E04090 /* KYBarrageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBarrageManager.m; sourceTree = "<group>"; };
+		BCFB00821DE4310500E04090 /* KYBarrageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBarrageModel.h; sourceTree = "<group>"; };
+		BCFB00831DE4310500E04090 /* KYBarrageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBarrageModel.m; sourceTree = "<group>"; };
+		BCFB00851DE4312C00E04090 /* KYBarrageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBarrageScene.h; sourceTree = "<group>"; };
+		BCFB00861DE4312C00E04090 /* KYBarrageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBarrageScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,7 @@
 		BCFB00621DE42DA400E04090 /* KYBarrageKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BCFB007A1DE42ECE00E04090 /* KYBarrageKit */,
 				BCFB00661DE42DA400E04090 /* AppDelegate.h */,
 				BCFB00671DE42DA400E04090 /* AppDelegate.m */,
 				BCFB00691DE42DA400E04090 /* ViewController.h */,
@@ -77,6 +88,21 @@
 				BCFB00641DE42DA400E04090 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCFB007A1DE42ECE00E04090 /* KYBarrageKit */ = {
+			isa = PBXGroup;
+			children = (
+				BCFB007E1DE42F4900E04090 /* KYBarrageKit.h */,
+				BCFB007F1DE430A700E04090 /* KYBarrageManager.h */,
+				BCFB00801DE430A700E04090 /* KYBarrageManager.m */,
+				BCFB00821DE4310500E04090 /* KYBarrageModel.h */,
+				BCFB00831DE4310500E04090 /* KYBarrageModel.m */,
+				BCFB00851DE4312C00E04090 /* KYBarrageScene.h */,
+				BCFB00861DE4312C00E04090 /* KYBarrageScene.m */,
+			);
+			name = KYBarrageKit;
+			path = ../../KYBarrageKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +177,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCFB00811DE430A700E04090 /* KYBarrageManager.m in Sources */,
 				BCFB006B1DE42DA400E04090 /* ViewController.m in Sources */,
+				BCFB00841DE4310500E04090 /* KYBarrageModel.m in Sources */,
+				BCFB00871DE4312C00E04090 /* KYBarrageScene.m in Sources */,
 				BCFB00681DE42DA400E04090 /* AppDelegate.m in Sources */,
 				BCFB00651DE42DA400E04090 /* main.m in Sources */,
 			);
@@ -275,6 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V446K9WVQL;
 				INFOPLIST_FILE = KYBarrageKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kingly09.KYBarrageKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -287,6 +317,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V446K9WVQL;
 				INFOPLIST_FILE = KYBarrageKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kingly09.KYBarrageKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
