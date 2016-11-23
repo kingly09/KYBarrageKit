@@ -179,6 +179,7 @@
              CGRect imageframe = _imageView.frame;
              imageframe.size.width  = _model.ky_hight > 0?_model.ky_hight:30.0;
              imageframe.size.height = _model.ky_hight > 0?_model.ky_hight:30.0;
+             
             _imageView.frame = imageframe;
                         
             [_titleLabel sizeToFit];
