@@ -193,6 +193,11 @@
             
         case KYBarrageDisplayTypeOther:
             // - other types -
+            _voteButton.hidden = true;
+            _imageView.hidden = true;
+            [_titleLabel sizeToFit];
+            self.bounds = _titleLabel.bounds;
+
             
             break;
         default:
@@ -267,7 +272,10 @@
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
 
     if ([_voteButton pointInside:point withEvent:event]) {
-        NSLog(@"click~~~");
+        NSLog(@"_voteButton click~~~");
+    }
+    if ([_imageView pointInside:point withEvent:event]) {
+        NSLog(@"_imageView click~~~");
     }
     return [super hitTest:point withEvent:event];
 }
