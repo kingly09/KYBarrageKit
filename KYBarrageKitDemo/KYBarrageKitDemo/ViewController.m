@@ -48,15 +48,11 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
   
     _manager = [KYBarrageManager manager];
     _manager.bindingView = self.view;
-//    _manager.delegate = self;
+    _manager.delegate = self;
     _manager.scrollSpeed = 30;
     _manager.memoryMode = KYBarrageMemoryWarningModeHalf;
     _manager.refreshInterval = 1.0;
-//    [_manager startScroll];
-    
-    
-
-
+    [_manager startScroll];
     
 
 }
@@ -82,18 +78,18 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
 - (IBAction)sendBarrage:(id)sender {
 
     //_manager被动接收弹幕
-    _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
-    _manager.displayLocation = KYBarrageDisplayLocationTypeBottom;
+    _manager.scrollDirection = KYBarrageScrollDirectBottomToTop;
+    _manager.displayLocation = KYBarrageDisplayLocationTypeCenter;
 
    
     int a = arc4random() % 10000;
-    NSString *str = [NSString stringWithFormat:@"被动接收弹幕%d hi",a];
+    NSString *str = [NSString stringWithFormat:@"I'm coming %d ",a];
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
     [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
     
     KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
-    m.displayLocation = KYBarrageDisplayLocationTypeBottom;
+    m.displayLocation = KYBarrageDisplayLocationTypeCenter;
     m.barrageType = KYBarrageDisplayTypeImage;
     m.object = [UIImage imageNamed:@"digg_1"];
     [_manager showBarrageWithDataSource:m];
@@ -105,7 +101,7 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
 - (id)barrageManagerDataSource {
     
     _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
-    _manager.displayLocation = KYBarrageDisplayLocationTypeTop;
+    _manager.displayLocation = KYBarrageDisplayLocationTypeDefault;
 
     int a = arc4random() % 10000;
     NSString *str = [NSString stringWithFormat:@"%d hi",a];
@@ -114,7 +110,6 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
     
     KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
-    m.displayLocation = KYBarrageDisplayLocationTypeTop;
     m.barrageType = KYBarrageDisplayTypeImage;
     m.object = [UIImage imageNamed:@"digg_1"];
     return m;

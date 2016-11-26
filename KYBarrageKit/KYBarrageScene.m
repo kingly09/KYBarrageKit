@@ -29,6 +29,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "KYBarrageManager.h"
 
+@interface KYBarrageScene(){
+
+}
+@end
+
 @implementation KYBarrageScene
 
 - (instancetype)initWithModel:(KYBarrageModel *)model {
@@ -164,6 +169,7 @@
             frame.size.height = CGRectGetHeight(_titleLabel.frame);
             _voteButton.frame = frame;
             self.bounds = CGRectMake(0, 0, CGRectGetWidth(_titleLabel.frame) + CGRectGetWidth(_voteButton.frame), CGRectGetHeight(_titleLabel.frame));
+          
             break;
          case KYBarrageDisplayTypeImage:
          
@@ -189,7 +195,7 @@
              _titleLabel.frame = titleLabelframe;
             
             self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame), CGRectGetHeight(_imageView.frame));
-            break;
+             break;
             
         case KYBarrageDisplayTypeOther:
             // - other types -
@@ -197,8 +203,7 @@
             _imageView.hidden = true;
             [_titleLabel sizeToFit];
             self.bounds = _titleLabel.bounds;
-
-            
+          
             break;
         default:
             // --BarrageDisplayTypeDefault--
@@ -206,6 +211,7 @@
             _imageView.hidden = true;
             [_titleLabel sizeToFit];
             self.bounds = _titleLabel.bounds;
+            
             break;
     }
     
@@ -222,23 +228,29 @@
             sourceFrame = model.bindView.bounds;
             break;
         case KYBarrageDisplayLocationTypeTop:
-            sourceFrame = CGRectMake(0, 0, CGRectGetWidth(model.bindView.bounds), CGRectGetHeight(model.bindView.bounds) / 3.0);
+            sourceFrame = CGRectMake(0, 0, CGRectGetWidth(model.bindView.bounds), CGRectGetHeight(model.bindView.bounds)/3.0);
             break;
         case KYBarrageDisplayLocationTypeCenter:
-            sourceFrame = CGRectMake(0, CGRectGetHeight(model.bindView.bounds) / 3.0, CGRectGetWidth(model.bindView.bounds), CGRectGetHeight(model.bindView.bounds) / 3.0);
+            sourceFrame = CGRectMake(0, CGRectGetHeight(model.bindView.bounds)/3.0, CGRectGetWidth(model.bindView.bounds), CGRectGetHeight(model.bindView.bounds)/3.0);
             break;
         case KYBarrageDisplayLocationTypeBottom:
-            sourceFrame = CGRectMake(0, CGRectGetHeight(model.bindView.bounds) / 3.0 * 2.0, CGRectGetWidth(model.bindView.bounds), CGRectGetHeight(model.bindView.bounds) / 3.0);
+            sourceFrame = CGRectMake(0, CGRectGetHeight(model.bindView.bounds)/3.0* 2.0, CGRectGetWidth(model.bindView.bounds), CGRectGetHeight(model.bindView.bounds)/3.0);
             break;
         default:
             break;
     }
+
+    float random = RandomBetween(CGRectGetMinY(sourceFrame), CGRectGetMaxY(sourceFrame) - CGRectGetHeight(self.bounds));
+    if (random  == CGRectGetMinY(sourceFrame) ) {
+        random += CGRectGetHeight(self.bounds);
+    }
+    
     switch (model.direction) {
         case KYBarrageScrollDirectRightToLeft:
-            originPoint = CGPointMake(CGRectGetMaxX(sourceFrame), RandomBetween(0, CGRectGetHeight(sourceFrame) - CGRectGetHeight(self.bounds)));
+            originPoint = CGPointMake(CGRectGetMaxX(sourceFrame), random);
             break;
         case KYBarrageScrollDirectLeftToRight:
-            originPoint = CGPointMake(-CGRectGetWidth(self.bounds), RandomBetween(0, CGRectGetHeight(sourceFrame) - CGRectGetHeight(self.bounds)));
+            originPoint = CGPointMake(-CGRectGetWidth(self.bounds),random);
             break;
         case KYBarrageScrollDirectBottomToTop:
             originPoint = CGPointMake(RandomBetween(0, CGRectGetWidth(sourceFrame)), CGRectGetMaxY(sourceFrame) + CGRectGetHeight(self.bounds));
@@ -257,7 +269,6 @@
 }
 
 #pragma mark - AnimatonDelegate
-
 // stop
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (flag) {
@@ -290,6 +301,7 @@ float RandomBetween(float smallerNumber, float largerNumber) {
     int precision = 100;
     //First get the difference between them.
     float subtraction = largerNumber - smallerNumber;
+    
     //Absolute value
     subtraction = ABS(subtraction);
     //Multiplied by the number of bits
@@ -300,6 +312,10 @@ float RandomBetween(float smallerNumber, float largerNumber) {
     randomNumber /= precision;
     //Add a random value to a smaller value.
     float result = MIN(smallerNumber, largerNumber) + randomNumber;
+    
+    if (result < smallerNumber) {
+      return smallerNumber;
+    }
     //Return result
     return result;
 }
