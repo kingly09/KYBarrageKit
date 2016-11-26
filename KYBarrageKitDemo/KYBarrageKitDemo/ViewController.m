@@ -52,6 +52,9 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     _manager.scrollSpeed = 30;
     _manager.memoryMode = KYBarrageMemoryWarningModeHalf;
     _manager.refreshInterval = 1.0;
+    _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
+    _manager.displayLocation = KYBarrageDisplayLocationTypeDefault;
+
     [_manager startScroll];
     
 
@@ -75,34 +78,11 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
 }
 
 
-- (IBAction)sendBarrage:(id)sender {
-
-    //_manager被动接收弹幕
-    _manager.scrollDirection = KYBarrageScrollDirectBottomToTop;
-    _manager.displayLocation = KYBarrageDisplayLocationTypeCenter;
-
-   
-    int a = arc4random() % 10000;
-    NSString *str = [NSString stringWithFormat:@"I'm coming %d ",a];
-    
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
-    [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
-    
-    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
-    m.displayLocation = KYBarrageDisplayLocationTypeCenter;
-    m.barrageType = KYBarrageDisplayTypeImage;
-    m.object = [UIImage imageNamed:@"digg_1"];
-    [_manager showBarrageWithDataSource:m];
-
-}
 
 
 #pragma mark - BarrageManagerDelegate
 - (id)barrageManagerDataSource {
     
-    _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
-    _manager.displayLocation = KYBarrageDisplayLocationTypeDefault;
-
     int a = arc4random() % 10000;
     NSString *str = [NSString stringWithFormat:@"%d hi",a];
     
@@ -110,6 +90,8 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
     
     KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
+    m.displayLocation = _manager.displayLocation;
+    m.direction       = _manager.scrollDirection;
     m.barrageType = KYBarrageDisplayTypeImage;
     m.object = [UIImage imageNamed:@"digg_1"];
     return m;
@@ -134,6 +116,87 @@ UIColor * RandomColor() {
     return [UIColor colorWithRed:a green:b blue:c alpha:1.0];
 }
 
+- (IBAction)displayLocationAction:(UIButton *)sender{
+   
+   NSInteger displayLocation = sender.tag - 100;
+   if (displayLocation == KYBarrageDisplayLocationTypeDefault) {
+      _manager.displayLocation = KYBarrageDisplayLocationTypeDefault;
+      
+   }else if (displayLocation == KYBarrageDisplayLocationTypeTop) {
+      _manager.displayLocation = KYBarrageDisplayLocationTypeTop;
+      
+   }else if (displayLocation == KYBarrageDisplayLocationTypeCenter) {
+      _manager.displayLocation = KYBarrageDisplayLocationTypeCenter;
+      
+   }else if (displayLocation == KYBarrageDisplayLocationTypeBottom) {
+      _manager.displayLocation = KYBarrageDisplayLocationTypeBottom;
+      
+   }
+   
+   [self sendBarrage];
+}
+
+- (IBAction)scrollDirectionAction:(UIButton *)sender{
+   NSInteger  scrollDirection =  sender.tag - 200;
+   if (scrollDirection == KYBarrageScrollDirectRightToLeft) {
+      _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
+      
+   }else if (scrollDirection == KYBarrageScrollDirectLeftToRight) {
+      _manager.scrollDirection = KYBarrageScrollDirectLeftToRight;
+      
+   }else if (scrollDirection == KYBarrageScrollDirectBottomToTop) {
+      _manager.scrollDirection = KYBarrageScrollDirectBottomToTop;
+      
+   }else if (scrollDirection == KYBarrageScrollDirectTopToBottom) {
+      _manager.scrollDirection = KYBarrageScrollDirectTopToBottom;
+      
+   } 
+  
+   [self sendBarrage];
+}
+
+
+
+- (void)sendBarrage{
+  
+    //_manager passive barrage
+    
+    int a = arc4random() % 10000;
+    NSString *str = [NSString stringWithFormat:@"I'm coming %d ",a];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
+    [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
+    
+    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
+    m.displayLocation = _manager.displayLocation;
+    m.direction       = _manager.scrollDirection;
+    m.barrageType = KYBarrageDisplayTypeImage;
+    m.object = [UIImage imageNamed:@"digg_1"];
+    [_manager showBarrageWithDataSource:m];
+
+}
+- (IBAction)cleanAllBarrages:(id)sender {
+     //On the screen the current barrage delete, and stop acquiring new barrage
+     [_manager closeBarrage];
+}
+- (IBAction)pauseAllScroll:(UIButton *)sender {
+    
+    sender.selected = !sender.selected; 
+    
+    if (sender.selected == YES) {
+       [sender setTitle:@"ReStartAll" forState:UIControlStateNormal];
+   }else{
+       [sender setTitle:@"pauseAll" forState:UIControlStateNormal];
+   }
+    // 1. On the screen the barrage is suspended, and stop acquiring new barrage
+    // 2. The current barrage on the screen to start rolling, and to obtain a new barrage
+    [_manager pauseScroll];
+}
+- (IBAction)startNewScroll:(id)sender {
+
+   [_manager startScroll];
+
+}
 
 
 

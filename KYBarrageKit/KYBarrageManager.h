@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
 // pause or resume barrage
 - (void)pauseScroll;
 
-// show or close barrage
+// close barrage
 - (void)closeBarrage;
 
 // Receive memory warning, can remove a barrage of buffer pool, the buffer pool can also remove half

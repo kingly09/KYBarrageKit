@@ -202,10 +202,11 @@ static KYBarrageManager *instance;
 
 - (void)pauseScroll {
     if (_currentStatus == KYBarrageStatusTypeClose) {
+        [self startScroll];
         return;
     }
     if (_currentStatus == KYBarrageStatusTypeNormal) {
-        //将屏幕上的弹幕都暂停下来，并且停止获取新的弹幕
+        //On the screen the barrage is suspended, and stop acquiring new barrage
         [_timer setFireDate:[NSDate distantFuture]];
 
         [self.barrageScenes enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -214,6 +215,7 @@ static KYBarrageManager *instance;
         }];
         _currentStatus = KYBarrageStatusTypePause;
     }else if (_currentStatus == KYBarrageStatusTypePause) {
+       //The current barrage on the screen to start rolling, and to obtain a new barrage
         [_timer setFireDate:[NSDate date]];
         [self.barrageScenes enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             KYBarrageScene *scene = obj;
@@ -224,19 +226,20 @@ static KYBarrageManager *instance;
 }
 
 - (void)closeBarrage {
-    if (_currentStatus == KYBarrageStatusTypeNormal) {
+    if (_currentStatus == KYBarrageStatusTypeNormal || _currentStatus == KYBarrageStatusTypePause)  {
         _currentStatus = KYBarrageStatusTypeClose;
+        // On the screen the current barrage delete, and stop acquiring new barrage
         [_timer setFireDate:[NSDate distantFuture]];
 
         [self.barrageScenes enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             KYBarrageScene *scene = obj;
             [scene close];
         }];
-
-    }else if (_currentStatus == KYBarrageStatusTypeClose || _currentStatus == KYBarrageStatusTypePause) {
-        _currentStatus = KYBarrageStatusTypeNormal;
-        [_timer setFireDate:[NSDate date]];
-    }
+   }
+//    }else if (_currentStatus == KYBarrageStatusTypeClose || _currentStatus == KYBarrageStatusTypePause) {
+//        _currentStatus = KYBarrageStatusTypeNormal;
+//        [_timer setFireDate:[NSDate date]];
+//    }
 }
 
 - (void)toDealloc {
@@ -268,5 +271,7 @@ static KYBarrageManager *instance;
 - (void)cleanAllCache {
     [_cachePool removeAllObjects];
 }
+
+
 
 @end

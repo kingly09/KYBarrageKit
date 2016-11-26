@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,19 +22,155 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC5-pD-wcd">
-                                <rect key="frame" x="17" y="67" width="118" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sC5-pD-wcd">
+                                <rect key="frame" x="26" y="67" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="15z-Sf-j3w"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Push barrage">
+                                <state key="normal" title="Scroll down">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendBarrage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zim-6d-weu"/>
+                                    <action selector="scrollDirectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3D0-TQ-TjZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idL-CH-jBt">
+                                <rect key="frame" x="128" y="227" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="rtE-ug-7lR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Top">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayLocationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F7p-pp-C26"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gA-2l-scM">
+                                <rect key="frame" x="128" y="174" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="INT-yS-eho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Default">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayLocationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bG7-OZ-wns"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdT-Ls-4FZ">
+                                <rect key="frame" x="251" y="67" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="sDk-MV-Hpl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Scroll Left">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scrollDirectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mkh-Wo-3jb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R0-2G-fzR">
+                                <rect key="frame" x="26" y="606" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="4fR-m1-aOT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Scroll Right">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scrollDirectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhp-Nt-64U"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bw7-Wp-ZTJ">
+                                <rect key="frame" x="251" y="606" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="YBC-k9-JWT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Scroll Up">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scrollDirectionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1pk-AW-Luc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joO-xA-f2C">
+                                <rect key="frame" x="128" y="272" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="pRp-Rz-fAf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Center">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayLocationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uhq-yJ-urb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oo9-XC-LVU">
+                                <rect key="frame" x="129" y="313" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="NoX-O7-neT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Bottom">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayLocationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q4Y-HW-BDY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thd-Ad-Gp8">
+                                <rect key="frame" x="284" y="199" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="cleanAll"/>
+                                <connections>
+                                    <action selector="cleanAllBarrages:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2BV-JF-5cm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NP-PI-efd">
+                                <rect key="frame" x="284" y="237" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="pauseAll"/>
+                                <state key="selected" title="restartAll"/>
+                                <connections>
+                                    <action selector="pauseAllScroll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bj6-pE-QhI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fM8-VA-BKe">
+                                <rect key="frame" x="287" y="274" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="startNew"/>
+                                <connections>
+                                    <action selector="startNewScroll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sKN-3R-3Oa"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="joO-xA-f2C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7KD-Xj-Hik"/>
+                            <constraint firstItem="oo9-XC-LVU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="313" id="8M0-3y-f6r"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8R0-2G-fzR" secondAttribute="bottom" constant="31" id="8S3-1z-Cfa"/>
+                            <constraint firstItem="oo9-XC-LVU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IIW-T8-qWB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Bw7-Wp-ZTJ" secondAttribute="bottom" constant="31" id="Jwe-kD-acZ"/>
+                            <constraint firstItem="8R0-2G-fzR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="Nj4-5s-zAg"/>
+                            <constraint firstItem="FdT-Ls-4FZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="47" id="NrQ-TD-w0g"/>
+                            <constraint firstItem="joO-xA-f2C" firstAttribute="leading" secondItem="idL-CH-jBt" secondAttribute="leading" id="PZZ-Gq-cpM"/>
+                            <constraint firstItem="joO-xA-f2C" firstAttribute="top" secondItem="idL-CH-jBt" secondAttribute="bottom" constant="15" id="Uxb-um-LNC"/>
+                            <constraint firstItem="Bw7-Wp-ZTJ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="ftQ-wx-wdp"/>
+                            <constraint firstItem="joO-xA-f2C" firstAttribute="leading" secondItem="3gA-2l-scM" secondAttribute="leading" id="ll3-3H-2UJ"/>
+                            <constraint firstItem="idL-CH-jBt" firstAttribute="top" secondItem="3gA-2l-scM" secondAttribute="bottom" constant="23" id="r7t-Wj-aID"/>
+                            <constraint firstItem="oo9-XC-LVU" firstAttribute="top" secondItem="joO-xA-f2C" secondAttribute="bottom" constant="11" id="sl3-yu-C3c"/>
+                            <constraint firstItem="FdT-Ls-4FZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="10" id="uWr-gP-6Ae"/>
+                            <constraint firstItem="sC5-pD-wcd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="w4A-uM-HEB"/>
+                            <constraint firstItem="sC5-pD-wcd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="47" id="z9O-cQ-bAV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
