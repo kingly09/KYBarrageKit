@@ -84,7 +84,7 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
 - (id)barrageManagerDataSource {
     
     int a = arc4random() % 10000;
-    NSString *str = [NSString stringWithFormat:@"%d hi",a];
+    NSString *str = [NSString stringWithFormat:@"%d digg",a];
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
     [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
@@ -93,19 +93,38 @@ typedef void(^MultiParmsBlock)(NSString *p1, ...);
     m.displayLocation = _manager.displayLocation;
     m.direction       = _manager.scrollDirection;
     m.barrageType = KYBarrageDisplayTypeImage;
-    m.object = [UIImage imageNamed:@"digg_1"];
+    m.object = [UIImage imageNamed:[NSString stringWithFormat:@"digg_%d",arc4random() % 10]];
     return m;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint touchPoint = [touch locationInView:self.view];
-    [[_manager barrageScenes] enumerateObjectsUsingBlock:^(KYBarrageScene * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.layer.presentationLayer hitTest:touchPoint]) {
-            /* if barrage's type is ` KYBarrageDisplayTypeVote ` or `KYBarrageDisplayTypeImage`, add your code here*/
-            NSLog(@"message = %@",obj.model.message.string);
-        }
-    }];
+  UITouch *touch = [touches anyObject];
+  CGPoint touchPoint = [touch locationInView:self.view];
+  [[_manager barrageScenes] enumerateObjectsUsingBlock:^(KYBarrageScene * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    if ([obj.layer.presentationLayer hitTest:touchPoint]) {
+      /* if barrage's type is ` KYBarrageDisplayTypeVote ` or `KYBarrageDisplayTypeImage`, add your code here*/
+      NSLog(@"message = %@",obj.model.message.string);
+      
+      [obj pause];
+      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"The barrage was clicked ！"
+                                                                     message:nil
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+      [alert addAction:[UIAlertAction
+                        actionWithTitle:@"pause for 3 seconds" style:UIAlertActionStyleDefault
+                        
+                        handler:^(UIAlertAction *action) {
+                          
+                          int delayInSeconds = 3 ;
+                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [obj resume];
+                          });
+                          
+                        }]];
+      [self presentViewController:alert animated:YES completion:nil];
+      
+      
+    }
+  }];
 }
 
 UIColor * RandomColor() {
@@ -161,7 +180,7 @@ UIColor * RandomColor() {
   
     //_manager passive barrage
     
-    int a = arc4random() % 10000;
+    int a = arc4random() % 100000;
     NSString *str = [NSString stringWithFormat:@"I'm coming %d ",a];
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
@@ -170,8 +189,7 @@ UIColor * RandomColor() {
     KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
     m.displayLocation = _manager.displayLocation;
     m.direction       = _manager.scrollDirection;
-    m.barrageType = KYBarrageDisplayTypeImage;
-    m.object = [UIImage imageNamed:@"digg_1"];
+    m.barrageType = KYBarrageDisplayTypeDefault;
     [_manager showBarrageWithDataSource:m];
 
 }
