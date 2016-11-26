@@ -195,7 +195,8 @@
              _titleLabel.frame = titleLabelframe;
             
             self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame), CGRectGetHeight(_imageView.frame));
-             break;
+             
+            break;
             
         case KYBarrageDisplayTypeOther:
             // - other types -
