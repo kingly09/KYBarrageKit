@@ -1,10 +1,13 @@
 # KYBarrageKit
 这是一个iOS高扩展的弹幕渲染库，适用大多数直播类弹幕场景。
 
+
+
 # 原因
 公司是做直播电商平台的，产品需要在直播界面有弹幕效果，还有一些特殊的动画效果，根据产品提供的需要，结合网上的一些开源项目，自己造了轮子，写一个直播类弹幕渲染库，以来满足我们产品多变的功能需求。
 
 # 特征
+
 * 支持弹幕的4个方位滚动方向；
 * 自定义弹幕的滚动速度；
 * 弹幕信息为`NSMutableAttributedString`类型，支持图片和文字弹幕，emoji表情符号等；
@@ -18,12 +21,14 @@
 
 效果如下图所示：
 
+![](https://raw.githubusercontent.com/kingly09/KYBarrageKit/master/images/ba01.gif)
+
+
 # 反馈
 
-
 *  如果需要帮助，可以使用**QQ:** 362108564联系我 或**weibo:** [http://weibo.com/balenn](http://weibo.com/balenn) 留言.
-* 如果你发现了一个bug，打开一个 **issue**.
-* 如果您有一个功能请求，请打开一个 **issue**.
+* 如果你发现了一个bug，打开一个 [**issue**](https://github.com/kingly09/KYBarrageKit/issues/new).
+* 如果您有一个功能请求，请打开一个 [**issue**](https://github.com/kingly09/KYBarrageKit/issues/new).
 * 如果您想贡献，请提交一个请求.
 
 如果有任何你觉得不对的地方，或有更好的建议，以上联系都可以联系我。 十分感谢！
@@ -50,6 +55,7 @@
 使用 `cocoaPods` 管理第三方库， 如果电脑没有安装 `cocoapods`，请先安装 `cocoapods`。安装方式可参考：[最新的cocoapods安装] (http://blog.sina.com.cn/s/blog_6ff6523d0102x8dq.html)
 
 # 使用
+
 
 * 在需要使用弹幕渲染功能的地方
  
@@ -96,9 +102,8 @@ int a = arc4random() % 100000;
 全局设置
 
 ```
-
 _manager.displayLocation = KYBarrageDisplayLocationTypeTop;  
- 
+
 ```
 或 当个子弹幕设置
  
@@ -123,7 +128,6 @@ KYBarrageDisplayLocationTypeHidden   | 4   |  不显示
 全局设置
 
 ```
-
 _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;  
  
 ```
@@ -134,6 +138,7 @@ _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
     m.direction       = _manager.scrollDirection;
  
 ```
+
 支持四个方向对应`NSInteger`的枚举:
 
 KYBarrageScrollDirection            | value| note 
@@ -216,6 +221,7 @@ KYBarrageScrollDirectTopToBottom    | 3   |  ↓↓↓↓↓
 
 如DEMO里面的点击弹幕，弹幕停顿3s后，进行滚动，也可以扩展其他事件，如下图所示：
 
+![](https://raw.githubusercontent.com/kingly09/KYBarrageKit/master/images/ba02.gif)
 
 
 # 鼓励
@@ -225,7 +231,3 @@ KYBarrageScrollDirectTopToBottom    | 3   |  ↓↓↓↓↓
 # LICENSE
 
 **KYBarrageKit** 被许可在 **MIT** 协议下使用。查阅 **LICENSE** 文件来获得更多信息。
-
-
-
-
