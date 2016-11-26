@@ -1,69 +1,70 @@
 # KYBarrageKit
-这是一个iOS高扩展的弹幕渲染库，适用大多数直播类弹幕场景。
+This is a barrage of rendering library iOS high expansion, for most of the live broadcasting barrage scene.
 
+[中文介绍](https://my.oschina.net/kinglyphp/blog/794767)
 
+# reason
 
-# 原因
-公司是做直播电商平台的，产品需要在直播界面有弹幕效果，还有一些特殊的动画效果，根据产品提供的需要，结合网上的一些开源项目，自己造了轮子，写一个直播类弹幕渲染库，以来满足我们产品多变的功能需求。
+The company is doing direct business platform, products need to interface with the barrage in the live effect, there are some special animation effects, according to the needs of products, some open source projects combined with the Internet, he made the wheels, write a barrage of live rendering library, since meet the functional requirements of our products and.
 
-# 特征
+# features
 
-* 支持弹幕的4个方位滚动方向；
-* 自定义弹幕的滚动速度；
-* 弹幕信息为`NSMutableAttributedString`类型，支持图片和文字弹幕，emoji表情符号等；
-* 当是弹幕为`KYBarrageDisplayTypeImage`类型是，支持弹幕自定义高度；
-* 弹幕的类型可以扩展自定义（目前支持纯文本和图文）；
-* 采用`CABasicAnimation`实现来弹幕动画效果；
-* 支持批量主动发送弹幕，弹幕的暂停，清除，重启，开始等；
-* 支持弹幕内存预警，清除弹幕缓冲池。
+* 4 round support barrage rolling direction;
+* the rolling speed custom barrage;
+* the barrage of information for the `NSMutableAttributedString` type support, pictures and text barrage, Emoji emoticons etc.;
+* When is `KYBarrageDisplayTypeImage` type barrage, barrage support custom height;
+* the types can be extended (custom barrage currently supports plain text and graphics);
+* using `CABasicAnimation` to achieve animation effects to barrage;
+* supports batch sending barrage, barrage pause, restart, remove, start etc.;
+* support a barrage of memory warning, remove a barrage of buffer pool.
 
-实现一些基础功能，更多的功能后续完善中......
+To achieve some of the basic functions, more follow-up to improve the function......
 
-效果如下图所示：
+Effect as shown below:
 
 ![](https://raw.githubusercontent.com/kingly09/KYBarrageKit/master/images/ba01.gif)
 
 
-# 反馈
+# feedback
 
-*  如果需要帮助，可以使用**QQ:** 362108564联系我 或**weibo:** [http://weibo.com/balenn](http://weibo.com/balenn) 留言.
-* 如果你发现了一个bug，打开一个 [**issue**](https://github.com/kingly09/KYBarrageKit/issues/new).
-* 如果您有一个功能请求，请打开一个 [**issue**](https://github.com/kingly09/KYBarrageKit/issues/new).
-* 如果您想贡献，请提交一个请求.
+*  if you need help, you can contact me or  [**weibo:**] (http://weibo.com/balenn) by using **QQ:** 362108564.
+* If you found a bug, open an [**issue**](https://github.com/kingly09/KYBarrageKit/issues/new).
+* If you have a feature request, open an [**issue**](https://github.com/kingly09/KYBarrageKit/issues/new).
+* If you want to contribute, submit a pull request.
 
-如果有任何你觉得不对的地方，或有更好的建议，以上联系都可以联系我。 十分感谢！
+If there is anything you think is wrong, or have a better suggestion, the above contact can contact me. Thank you very much.
 
 
-# 安装
-### 要求
+# installation
+### requirements
 
 * Xcode 7 +
 * iOS 7.0 +
 
-### 手动安装
+### installation manual
 
-先[下载项目](https://github.com/kingly09/KYBarrageKit.git)后,将子文件夹 **KYBarrageKit** 拖入到项目中, 导入头文件`KYBarrageKit.h` 开始使用.
+First [Download project](https://github.com/kingly09/KYBarrageKit.git) ,the **KYBarrageKit** sub folder into the project, import the `KYBarrageKit.h` header file in use.
 
-### CocoaPods安装
+### CocoaPods installation
 
-你可以在 **Podfile** 中加入下面一行代码来使用 **KYBarrageKit**
+You can add the following line of code to the **KYBarrageKit** to use the **Podfile**
 
 ```
 	pod 'KYBarrageKit'
 ```
 
-使用 `cocoaPods` 管理第三方库， 如果电脑没有安装 `cocoapods`，请先安装 `cocoapods`。安装方式可参考：[最新的cocoapods安装] (http://blog.sina.com.cn/s/blog_6ff6523d0102x8dq.html)
+Use `cocoaPods` to manage the third party library, if the computer does not install `cocoapods`, please install the `cocoapods`. Installation method can refer to: [the latest cocoapods installation] (http://blog.sina.com.cn/s/blog_6ff6523d0102x8dq.html)
 
-# 使用
+# usage
 
 
-* 在需要使用弹幕渲染功能的地方
+* in the need to use the function of local barrage rendering
  
  ``` 
   #import “KYBarrageKit”
  ```
  
-* 创建一个 `KYBarrageManager *manager` 对象，并将其 view add 到你想要添加弹幕动画的 view 上，如下面所示：
+* create a `KYBarrageManager *manager` object, and the view add that you want to add a barrage of animation view, as shown below:
 
 ```
 @interface ViewController ()
@@ -84,7 +85,7 @@
 }
 ```
 
-* 发送一个弹幕 
+* send a barrage 
  
 ```
 int a = arc4random() % 100000;
@@ -97,15 +98,15 @@ int a = arc4random() % 100000;
     [_manager showBarrageWithDataSource:m]; // Scroll Barrage 
 ```
 
-* 设置弹幕显示区域，支持四个方向，默认为 `KYBarrageDisplayLocationTypeDefault` 整个显示区域
+* set up a barrage of display area, support four direction, the default for the entire display area `KYBarrageDisplayLocationTypeDefault`
 
-全局设置
+Global setting
 
 ```
 _manager.displayLocation = KYBarrageDisplayLocationTypeTop;  
 
 ```
-或 当个子弹幕设置
+Or when the sub set barrage
  
 ```
    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
@@ -113,25 +114,26 @@ _manager.displayLocation = KYBarrageDisplayLocationTypeTop;
  
 ```
 
-支持显示区域对应`NSInteger`的枚举:
+Support for the display area of the corresponding `NSInteger` enumeration:
 
 KYBarrageDisplayLocationType        | value| note 
 ----------------------------------- | -----| -------------
-KYBarrageDisplayLocationTypeDefault  | 0   |  整个显示区域
-KYBarrageDisplayLocationTypeTop      | 1   |  顶部部分
-KYBarrageDisplayLocationTypeCenter   | 2   |  中间部分
-KYBarrageDisplayLocationTypeBottom   | 3   |  底部部分
-KYBarrageDisplayLocationTypeHidden   | 4   |  不显示
+KYBarrageDisplayLocationTypeDefault  | 0   |  the entire display area
+KYBarrageDisplayLocationTypeTop      | 1   |  the top part
+KYBarrageDisplayLocationTypeCenter   | 2   |  the middle part 
+KYBarrageDisplayLocationTypeBottom   | 3   |  the bottom part 
+KYBarrageDisplayLocationTypeHidden   | 4   |  Hidden
 
-* 设置弹幕显示位置，支持四个方向。
 
-全局设置
+* set the barrage position display support four direction.
+
+Global setting
 
 ```
 _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;  
  
 ```
-或 当个子弹幕设置
+Or when the sub set barrage
  
 ```
    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
@@ -139,7 +141,7 @@ _manager.scrollDirection = KYBarrageScrollDirectRightToLeft;
  
 ```
 
-支持四个方向对应`NSInteger`的枚举:
+Support for the enumeration of `NSInteger` in four directions:
 
 KYBarrageScrollDirection            | value| note 
 ----------------------------------- | -----| -------------
@@ -150,16 +152,16 @@ KYBarrageScrollDirectTopToBottom    | 3   |  ↓↓↓↓↓
 
 
 
-* 主动拉取弹幕数据发弹幕，设置 `KYBarrageManagerDelegate` 委托，调用`-delegate barrageManagerDataSource`返回数据
+* active pull data set barrage barrage, commissioned by `KYBarrageManagerDelegate`, call the `-delegate barrageManagerDataSource` data
 
-设置代理委托
+Set proxy，Open Access Initiative barrage
 
 ```
  _manager.delegate = self;
- [_manager startScroll]; //开启主动获取弹幕
+ [_manager startScroll]; //Open Access Initiative barrage
 ```
 
-调用方法
+Calling method
 
 ```
 - (id)barrageManagerDataSource {
@@ -179,32 +181,32 @@ KYBarrageScrollDirectTopToBottom    | 3   |  ↓↓↓↓↓
 }
 ```
 
-* 设置清除弹幕。
+* set the clear barrage.
 
 ```
 [_manager closeBarrage];
 ```
 
-* 设置弹幕的暂停与恢复。
+* set the barrage of pause and recovery.
 
  ``` 
-    // 1. 在屏幕上的阻塞被暂停，停止获取新的阻塞
-    // 2. 当前的屏幕上的弹幕重新滚动，并获得一个开始的新弹幕推送
+     // 1. On the screen the barrage is suspended, and stop acquiring new barrage
+     // 2. The current barrage on the screen to start rolling, and to obtain a new barrage
     [_manager pauseScroll];
  ```
 
-* 设置弹幕的类型目前支持纯文本`KYBarrageDisplayTypeDefault` 和图文`KYBarrageDisplayTypeImage`，可以在 `KYBarrageScene`自定义其他的类型。
+* type setting barrage currently supports plain text and graphics `KYBarrageDisplayTypeDefault` `KYBarrageDisplayTypeImage`, can customize other types of `KYBarrageScene`.
 
  ```
  m.barrageType = KYBarrageDisplayTypeImage;
  ```
  
-# 其他
+# Other
 
-支持弹幕的点击事件 
+The click event support barrage
 
 
-如果弹幕为`KYBarrageDisplayTypeImage`型的弹幕时，请重写`ViewController`的 `touchesBegan` 方法
+If a barrage of type `KYBarrageDisplayTypeImage` barrage, please rewrite the `ViewController` `touchesBegan` method
 
 ```
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -219,15 +221,16 @@ KYBarrageScrollDirectTopToBottom    | 3   |  ↓↓↓↓↓
 }
 ```
 
-如DEMO里面的点击弹幕，弹幕停顿3s后，进行滚动，也可以扩展其他事件，如下图所示：
+Such as click inside the DEMO barrage, barrage pause 3S after rolling, can also be extended to other events, as shown below:
+
 
 ![](https://raw.githubusercontent.com/kingly09/KYBarrageKit/master/images/ba02.gif)
 
 
-# 鼓励
+# encourage
 
-它若不慎给您帮助，请不吝啬给它点一个**star**，是对它的最好支持，非常感谢！🙏
+If it accidentally gives you help, please do not mean to give it a **star**, it is the best support for it, thank you very much!
 
 # LICENSE
 
-**KYBarrageKit** 被许可在 **MIT** 协议下使用。查阅 **LICENSE** 文件来获得更多信息。
+**KYBarrageKit** is licensed under the **MIT** protocol. Access to the **LICENSE** file for more information.
