@@ -72,7 +72,7 @@ static KYBarrageManager *instance;
 }
 
 - (void)dealloc {
-     if ([_timer isValid]){
+    if ([_timer isValid]){
       [_timer invalidate];
       _timer = nil;
     } 
@@ -253,10 +253,19 @@ static KYBarrageManager *instance;
 
 - (void)toDealloc {
     
-    [_timer invalidate];
-    _timer = nil;
-    [_cachePool removeAllObjects];
-    [_barrageScene removeAllObjects];
+    if ([_timer isValid]){
+      [_timer invalidate];
+      _timer = nil;
+    } 
+    
+    if (_cachePool.count > 0) {
+       [_cachePool removeAllObjects];
+    }
+   
+    if (_barrageScene.count > 0) {
+      [_barrageScene removeAllObjects];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
