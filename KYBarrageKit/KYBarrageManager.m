@@ -72,10 +72,19 @@ static KYBarrageManager *instance;
 }
 
 - (void)dealloc {
-    [_timer invalidate];
-    _timer = nil;
-    [_cachePool removeAllObjects];
-    [_barrageScene removeAllObjects];
+     if ([_timer isValid]){
+      [_timer invalidate];
+      _timer = nil;
+    } 
+    
+    if (_cachePool.count > 0) {
+       [_cachePool removeAllObjects];
+    }
+   
+    if (_barrageScene.count > 0) {
+      [_barrageScene removeAllObjects];
+    }
+    
     NSLog(@"BarrageManager dealloc~");
 }
 
