@@ -1,8 +1,8 @@
 //
-//  KYBarrageScene.h
+//  KYBarrageUserModel.h
 //  KYBarrageKitDemo
 //
-//  Created by kingly on 2016/11/22.
+//  Created by kingly on 2016/11/30.
 //  Copyright © 2016年 KYBarrageKit  Software (https://github.com/kingly09/KYBarrageKit) by kingly inc.
 
 //
@@ -25,38 +25,16 @@
 // THE SOFTWARE. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "KYBarrageModel.h"
-#import "KYBarrageUserModel.h"
+#import <Foundation/Foundation.h>
 
-@class KYBarrageManager;
+@interface KYBarrageUserModel : NSObject
 
-@class KYBarrageScene;
+@property (nonatomic,assign)   long userId;         
+@property (nonatomic,copy)     NSString *name;    
+@property (nonatomic,strong)   NSString *txt;     
+@property (nonatomic,copy)     NSString *url;    
+@property (nonatomic,assign)   int vip; 
+@property (nonatomic,assign)   int vipFrom;
 
-
-typedef void(^AnimationDidStopBlock)(KYBarrageScene *scene);
-
-@interface KYBarrageScene : UIView <CAAnimationDelegate> 
-
-@property (copy, nonatomic) KYBarrageModel *model;
-
-@property (strong, nonatomic) UILabel *titleLabel;
-
-@property (strong, nonatomic) UIButton *voteButton;
-
-@property (strong, nonatomic) UIImageView *imageView;
-
-@property (copy, nonatomic) AnimationDidStopBlock animationDidStopBlock;
-
-- (void)scroll;
-
-- (void)pause;
-
-- (void)resume;
-
-- (void)close;
-
-- (instancetype)initWithFrame:(CGRect)frame Model:(KYBarrageModel *)model;
 
 @end
-

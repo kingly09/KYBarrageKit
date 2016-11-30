@@ -28,8 +28,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "KYBarrageEnum.h"
+#import "KYBarrageUserModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
 
 @interface KYBarrageModel : NSObject
 
@@ -61,6 +63,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // barrage's author
 @property (strong, nonatomic, nullable) id author;
+
+// barrage's user 
+@property (strong, nonatomic) KYBarrageUserModel *barrageUser;
 
 // goal object
 @property (strong, nonatomic, nullable) id object;

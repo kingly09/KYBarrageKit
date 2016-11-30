@@ -66,6 +66,7 @@ typedef NS_ENUM(NSInteger, KYBarrageDisplayType) {
     KYBarrageDisplayTypeDefault = 0,  /* only text  */
     KYBarrageDisplayTypeVote,         /* text and vote */
     KYBarrageDisplayTypeImage,        /* text and image */
+    KYBarrageDisplayTypeCustomView,   /* Custom View  */
     KYBarrageDisplayTypeOther,        /* other        */
 };
 

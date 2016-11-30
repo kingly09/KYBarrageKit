@@ -186,10 +186,40 @@ UIColor * RandomColor() {
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
     [attr addAttribute:NSForegroundColorAttributeName value:RandomColor() range:NSMakeRange(0, str.length)];
     
+ 
+    
+    //KYBarrageDisplayTypeDefault
+//    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
+//    m.displayLocation = _manager.displayLocation;
+//    m.direction       = _manager.scrollDirection;
+//    m.barrageType = KYBarrageDisplayTypeDefault;
+   
+  
+     //KYBarrageDisplayTypeImage     
+//    KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
+//    m.displayLocation = _manager.displayLocation;
+//    m.direction       = _manager.scrollDirection;
+//    m.barrageType = KYBarrageDisplayTypeImage;
+//    m.object = [UIImage imageNamed:[NSString stringWithFormat:@"digg_%d",arc4random() % 10]];
+
+    // KYBarrageDisplayTypeCustomView
     KYBarrageModel *m = [[KYBarrageModel alloc] initWithBarrageContent:attr];
     m.displayLocation = _manager.displayLocation;
     m.direction       = _manager.scrollDirection;
-    m.barrageType = KYBarrageDisplayTypeDefault;
+    m.barrageType = KYBarrageDisplayTypeCustomView;
+    
+    m.object = [UIImage imageNamed:[NSString stringWithFormat:@"digg_%d",arc4random() % 10]];
+   
+    KYBarrageUserModel *barrageUser = [[KYBarrageUserModel  alloc] init];
+    barrageUser.userId  = 1001;
+    barrageUser.name    = @"kingly09";
+    barrageUser.txt     = @"comeing";
+    barrageUser.url     = @"";
+    barrageUser.vipFrom = arc4random() % 2 == 1?1:0;
+    barrageUser.vip     = 1;            
+    
+    m.barrageUser = barrageUser;
+
     [_manager showBarrageWithDataSource:m];
 
 }

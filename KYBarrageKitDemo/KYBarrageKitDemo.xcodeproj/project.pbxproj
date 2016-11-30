@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC82C2C71DEECE78001DBDA7 /* KYBarrageUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */; };
 		BCFB00651DE42DA400E04090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00641DE42DA400E04090 /* main.m */; };
 		BCFB00681DE42DA400E04090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00671DE42DA400E04090 /* AppDelegate.m */; };
 		BCFB006B1DE42DA400E04090 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB006A1DE42DA400E04090 /* ViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC82C2C51DEECE78001DBDA7 /* KYBarrageUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBarrageUserModel.h; sourceTree = "<group>"; };
+		BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBarrageUserModel.m; sourceTree = "<group>"; };
 		BCEAEFDC1DE4486B0094D422 /* KYBarrageEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYBarrageEnum.h; sourceTree = "<group>"; };
 		BCFB00601DE42DA400E04090 /* KYBarrageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBarrageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFB00641DE42DA400E04090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				BCFB00801DE430A700E04090 /* KYBarrageManager.m */,
 				BCFB00851DE4312C00E04090 /* KYBarrageScene.h */,
 				BCFB00861DE4312C00E04090 /* KYBarrageScene.m */,
+				BC82C2C51DEECE78001DBDA7 /* KYBarrageUserModel.h */,
+				BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */,
 			);
 			name = KYBarrageKit;
 			path = ../../KYBarrageKit;
@@ -185,6 +190,7 @@
 				BCFB00871DE4312C00E04090 /* KYBarrageScene.m in Sources */,
 				BCFB00681DE42DA400E04090 /* AppDelegate.m in Sources */,
 				BCFB00651DE42DA400E04090 /* main.m in Sources */,
+				BC82C2C71DEECE78001DBDA7 /* KYBarrageUserModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

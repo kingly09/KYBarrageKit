@@ -31,6 +31,7 @@
 
 @interface KYBarrageScene(){
 
+        UIImageView *vipImageView;
 }
 @end
 
@@ -75,8 +76,6 @@
     //imageView
     _imageView  = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.origin.x,self.bounds.origin.y, 30, 30)];
     _imageView.hidden = true;
-    [_imageView.layer setMasksToBounds:YES];
-    _imageView.layer.cornerRadius = 15;
     [self addSubview:_imageView];
     
 }
@@ -179,6 +178,11 @@
                UIImage *img = (UIImage *)_model.object;
                _imageView.image = img;
             }
+            
+            
+            [_imageView.layer setMasksToBounds:YES];
+            _imageView.layer.cornerRadius = 15;
+            
             _imageView.hidden = false;
             [_imageView sizeToFit];
             
@@ -193,12 +197,71 @@
              titleLabelframe.origin.x = CGRectGetMaxX(_imageView.frame) + 5;
              titleLabelframe.origin.y = CGRectGetMinY(_imageView.frame) + (_imageView.frame.size.height - titleLabelframe.size.height)/2;
              _titleLabel.frame = titleLabelframe;
+      
             
             self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame), CGRectGetHeight(_imageView.frame));
              
             break;
+          
+      case KYBarrageDisplayTypeCustomView:
+      {
+        _voteButton.hidden = YES;
+        /* text and image */
+        if (_model.object !=nil) {
+          UIImage *img = (UIImage *)_model.object;
+          _imageView.image = img;
+        }
+        
+      
+        _imageView.hidden = false;
+        [_imageView sizeToFit];
+        
+        CGRect imageframe = _imageView.frame;
+        imageframe.size.width  = _model.ky_hight > 0?_model.ky_hight:30.0;
+        imageframe.size.height = _model.ky_hight > 0?_model.ky_hight:30.0;
+        
+        _imageView.frame = imageframe;
+        
+        [_titleLabel sizeToFit];
+        CGRect titleLabelframe = _titleLabel.frame;
+        titleLabelframe.origin.x = CGRectGetMaxX(_imageView.frame) + 5;
+        titleLabelframe.origin.y = CGRectGetMinY(_imageView.frame) + (_imageView.frame.size.height - titleLabelframe.size.height)/2;
+        _titleLabel.frame = titleLabelframe;
+        
+         _imageView.clipsToBounds = YES;
+         _imageView.layer.cornerRadius = 15;
+         
+        if (_model.barrageUser.userId > 0) {
+          
+          vipImageView = [[UIImageView alloc] init];
+          vipImageView.frame = CGRectMake(20, 20, 12, 12);
+          NSString *vImgStr = [NSString new];
+          vImgStr = @"ic_small";
+          if (_model.barrageUser.vip > 0) {
+            vipImageView.hidden = NO;
             
-        case KYBarrageDisplayTypeOther:
+            if (_model.barrageUser.vipFrom == 0) {
+              
+              vImgStr = [vImgStr stringByAppendingString:@"_red"];
+            }else if (_model.barrageUser.vipFrom == 1){
+              
+              vImgStr = [vImgStr stringByAppendingString:@"_blue"];
+            }
+            vipImageView.image = [UIImage imageNamed:vImgStr];
+          }else{
+            vipImageView.hidden = YES;
+          }
+          
+          [self addSubview:vipImageView];
+          
+        }
+        
+        self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame), CGRectGetHeight(_imageView.frame));
+        
+        }
+        break;
+        
+      case KYBarrageDisplayTypeOther:
             // - other types -
             _voteButton.hidden = true;
             _imageView.hidden = true;
