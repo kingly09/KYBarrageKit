@@ -28,7 +28,7 @@
 #import "KYBarrageScene.h"
 #import <QuartzCore/QuartzCore.h>
 #import "KYBarrageManager.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+@import SDWebImage;
 
 @interface KYBarrageScene(){
 
