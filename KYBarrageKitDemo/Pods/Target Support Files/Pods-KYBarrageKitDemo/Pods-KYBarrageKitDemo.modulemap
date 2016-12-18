@@ -1,0 +1,6 @@
+framework module Pods_KYBarrageKitDemo {
+  umbrella header "Pods-KYBarrageKitDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

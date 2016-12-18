@@ -28,6 +28,7 @@
 #import "KYBarrageScene.h"
 #import <QuartzCore/QuartzCore.h>
 #import "KYBarrageManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface KYBarrageScene(){
 
@@ -179,7 +180,6 @@
                _imageView.image = img;
             }
             
-            
             [_imageView.layer setMasksToBounds:YES];
             _imageView.layer.cornerRadius = 15;
             
@@ -212,6 +212,11 @@
           _imageView.image = img;
         }
         
+         if (_model.barrageUser.url.length > 0 ) {
+                [_imageView sd_setImageWithURL:[NSURL URLWithString:_model.barrageUser.url] placeholderImage:[UIImage imageNamed:@"default_touxiang"]];
+                [[SDImageCache sharedImageCache] setShouldDecompressImages:NO];
+                [[SDWebImageDownloader sharedDownloader] setShouldDecompressImages:NO];  
+        }
       
         _imageView.hidden = false;
         [_imageView sizeToFit];
@@ -238,6 +243,9 @@
           NSString *vImgStr = [NSString new];
           vImgStr = @"ic_small";
           if (_model.barrageUser.vip > 0) {
+          
+            
+                  
             vipImageView.hidden = NO;
             
             if (_model.barrageUser.vipFrom == 0) {
@@ -248,6 +256,7 @@
               vImgStr = [vImgStr stringByAppendingString:@"_blue"];
             }
             vipImageView.image = [UIImage imageNamed:vImgStr];
+            
           }else{
             vipImageView.hidden = YES;
           }

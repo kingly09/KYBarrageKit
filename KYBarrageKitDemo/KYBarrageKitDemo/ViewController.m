@@ -208,13 +208,13 @@ UIColor * RandomColor() {
     m.direction       = _manager.scrollDirection;
     m.barrageType = KYBarrageDisplayTypeCustomView;
     
-    m.object = [UIImage imageNamed:[NSString stringWithFormat:@"digg_%d",arc4random() % 10]];
+//    m.object = [UIImage imageNamed:[NSString stringWithFormat:@"digg_%d",arc4random() % 10]];
    
     KYBarrageUserModel *barrageUser = [[KYBarrageUserModel  alloc] init];
     barrageUser.userId  = 1001;
     barrageUser.name    = @"kingly09";
     barrageUser.txt     = @"comeing";
-    barrageUser.url     = @"";
+    barrageUser.url     = @"https://cdn.pixabay.com/photo/2015/12/11/17/28/heart-1088487__340.png";
     barrageUser.vipFrom = arc4random() % 2 == 1?1:0;
     barrageUser.vip     = 1;            
     

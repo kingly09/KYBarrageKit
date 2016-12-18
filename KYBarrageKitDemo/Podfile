@@ -1,0 +1,6 @@
+use_frameworks!
+platform:ios,'7.0'
+target "KYBarrageKitDemo" do
+pod 'SDWebImage'
+
+end

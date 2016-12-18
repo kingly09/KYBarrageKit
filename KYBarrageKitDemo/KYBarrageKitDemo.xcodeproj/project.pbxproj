@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02F1637742A0B78A69E4DCED /* Pods_KYBarrageKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFD9FCA9FC01788F732A28C /* Pods_KYBarrageKitDemo.framework */; };
 		BC82C2C71DEECE78001DBDA7 /* KYBarrageUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */; };
 		BCFB00651DE42DA400E04090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00641DE42DA400E04090 /* main.m */; };
 		BCFB00681DE42DA400E04090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00671DE42DA400E04090 /* AppDelegate.m */; };
@@ -20,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DFD9FCA9FC01788F732A28C /* Pods_KYBarrageKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KYBarrageKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F925C8572507EDA19F409E9 /* Pods-KYBarrageKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYBarrageKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KYBarrageKitDemo/Pods-KYBarrageKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		8335419AD7BA1E85685ED8B2 /* Pods-KYBarrageKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYBarrageKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-KYBarrageKitDemo/Pods-KYBarrageKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BC82C2C51DEECE78001DBDA7 /* KYBarrageUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBarrageUserModel.h; sourceTree = "<group>"; };
 		BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBarrageUserModel.m; sourceTree = "<group>"; };
 		BCEAEFDC1DE4486B0094D422 /* KYBarrageEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYBarrageEnum.h; sourceTree = "<group>"; };
@@ -47,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02F1637742A0B78A69E4DCED /* Pods_KYBarrageKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F354EE23B8CFF0E2A12C6D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F925C8572507EDA19F409E9 /* Pods-KYBarrageKitDemo.debug.xcconfig */,
+				8335419AD7BA1E85685ED8B2 /* Pods-KYBarrageKitDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		740D97414BD639D2954F77CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DFD9FCA9FC01788F732A28C /* Pods_KYBarrageKitDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BCFB00571DE42DA400E04090 = {
 			isa = PBXGroup;
 			children = (
 				BCFB00621DE42DA400E04090 /* KYBarrageKitDemo */,
 				BCFB00611DE42DA400E04090 /* Products */,
+				2F354EE23B8CFF0E2A12C6D7 /* Pods */,
+				740D97414BD639D2954F77CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +143,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCFB00771DE42DA400E04090 /* Build configuration list for PBXNativeTarget "KYBarrageKitDemo" */;
 			buildPhases = (
+				5CCCFC8359D8FDAB97F41C77 /* [CP] Check Pods Manifest.lock */,
 				BCFB005C1DE42DA400E04090 /* Sources */,
 				BCFB005D1DE42DA400E04090 /* Frameworks */,
 				BCFB005E1DE42DA400E04090 /* Resources */,
+				C44CCD304EED6609995733EB /* [CP] Embed Pods Frameworks */,
+				3681B6F3FDC3A3707CD7C23D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,6 +205,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3681B6F3FDC3A3707CD7C23D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KYBarrageKitDemo/Pods-KYBarrageKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CCCFC8359D8FDAB97F41C77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C44CCD304EED6609995733EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KYBarrageKitDemo/Pods-KYBarrageKitDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BCFB005C1DE42DA400E04090 /* Sources */ = {
@@ -308,11 +383,12 @@
 		};
 		BCFB00781DE42DA400E04090 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F925C8572507EDA19F409E9 /* Pods-KYBarrageKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V446K9WVQL;
 				INFOPLIST_FILE = KYBarrageKitDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kingly09.KYBarrageKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,11 +397,12 @@
 		};
 		BCFB00791DE42DA400E04090 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8335419AD7BA1E85685ED8B2 /* Pods-KYBarrageKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V446K9WVQL;
 				INFOPLIST_FILE = KYBarrageKitDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kingly09.KYBarrageKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
