@@ -35,6 +35,7 @@
 @property (nonatomic,copy)     NSString *url;    
 @property (nonatomic,assign)   int vip; 
 @property (nonatomic,assign)   int vipFrom;
+@property (nonatomic,assign)   BOOL isChangeBorderColor;  //当时自己的时候，改变边框的颜色
 
 
 @end

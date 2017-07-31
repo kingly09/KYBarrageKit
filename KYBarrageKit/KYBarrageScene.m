@@ -28,8 +28,7 @@
 #import "KYBarrageScene.h"
 #import <QuartzCore/QuartzCore.h>
 #import "KYBarrageManager.h"
-
-@import SDWebImage;
+#import "UIImageView+WebCache.h"
 
 @interface KYBarrageScene(){
 
@@ -215,7 +214,7 @@
         
          if (_model.barrageUser.url.length > 0 ) {
                 [_imageView sd_setImageWithURL:[NSURL URLWithString:_model.barrageUser.url] placeholderImage:[UIImage imageNamed:@"default_touxiang"]];
-                [[SDImageCache sharedImageCache] setShouldDecompressImages:NO];
+//                [[SDImageCache sharedImageCache] setShouldDecompressImages:NO];
                 [[SDWebImageDownloader sharedDownloader] setShouldDecompressImages:NO];  
         }
       
@@ -235,8 +234,8 @@
         _titleLabel.frame = titleLabelframe;
         
          _imageView.clipsToBounds = YES;
-         _imageView.layer.cornerRadius = 15;
-         
+        _imageView.layer.cornerRadius = 15;
+        
         if (_model.barrageUser.userId > 0) {
           
           vipImageView = [[UIImageView alloc] init];
@@ -244,19 +243,23 @@
           NSString *vImgStr = [NSString new];
           vImgStr = @"ic_small";
           if (_model.barrageUser.vip > 0) {
-          
-            
-                  
-            vipImageView.hidden = NO;
             
             if (_model.barrageUser.vipFrom == 0) {
-              
-              vImgStr = [vImgStr stringByAppendingString:@"_red"];
+              //个人加V
+              vImgStr = @"renzheng_pingpai";
             }else if (_model.barrageUser.vipFrom == 1){
-              
-              vImgStr = [vImgStr stringByAppendingString:@"_blue"];
+              //红人加V
+              vImgStr = @"renzhen_geren";
+            }else if (_model.barrageUser.vipFrom == 2){
+              //商家加V
+              vImgStr = @"ic_shangjia";
+            }else if (_model.barrageUser.vipFrom == 3){
+              //企业加V
+              vImgStr = @"ic_qiye";
+            }else if (_model.barrageUser.vipFrom == 4){
+              //官方加V
+              vImgStr = @"ic_guanfan";
             }
-            vipImageView.image = [UIImage imageNamed:vImgStr];
             
           }else{
             vipImageView.hidden = YES;
@@ -266,9 +269,17 @@
           
         }
         
-        self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame), CGRectGetHeight(_imageView.frame));
+        self.bounds = CGRectMake(0, 0, CGRectGetWidth(_imageView.frame) + CGRectGetWidth(_titleLabel.frame) + 12, CGRectGetHeight(_imageView.frame));
         
+        if (_model.barrageUser.isChangeBorderColor == YES) {
+          
+          self.clipsToBounds = YES;
+          self.layer.cornerRadius =  CGRectGetHeight(_imageView.frame)/2;
+          self.layer.borderWidth  =  2;
+          self.layer.borderColor  = [UIColor colorWithRed:255/255.0 green:60/255.0 blue:111/255.0 alpha:1.0].CGColor;
         }
+        
+      }
         break;
         
       case KYBarrageDisplayTypeOther:

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02F1637742A0B78A69E4DCED /* Pods_KYBarrageKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFD9FCA9FC01788F732A28C /* Pods_KYBarrageKitDemo.framework */; };
 		BC82C2C71DEECE78001DBDA7 /* KYBarrageUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */; };
+		BCAB93D71F1CA4AE00E6557C /* UIImage+MZImagepProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAB93D61F1CA4AE00E6557C /* UIImage+MZImagepProcessing.m */; };
 		BCFB00651DE42DA400E04090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00641DE42DA400E04090 /* main.m */; };
 		BCFB00681DE42DA400E04090 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB00671DE42DA400E04090 /* AppDelegate.m */; };
 		BCFB006B1DE42DA400E04090 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFB006A1DE42DA400E04090 /* ViewController.m */; };
@@ -26,6 +27,8 @@
 		8335419AD7BA1E85685ED8B2 /* Pods-KYBarrageKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KYBarrageKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-KYBarrageKitDemo/Pods-KYBarrageKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		BC82C2C51DEECE78001DBDA7 /* KYBarrageUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYBarrageUserModel.h; sourceTree = "<group>"; };
 		BC82C2C61DEECE78001DBDA7 /* KYBarrageUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYBarrageUserModel.m; sourceTree = "<group>"; };
+		BCAB93D51F1CA4AE00E6557C /* UIImage+MZImagepProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MZImagepProcessing.h"; sourceTree = "<group>"; };
+		BCAB93D61F1CA4AE00E6557C /* UIImage+MZImagepProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MZImagepProcessing.m"; sourceTree = "<group>"; };
 		BCEAEFDC1DE4486B0094D422 /* KYBarrageEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KYBarrageEnum.h; sourceTree = "<group>"; };
 		BCFB00601DE42DA400E04090 /* KYBarrageKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYBarrageKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFB00641DE42DA400E04090 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				BCFB00671DE42DA400E04090 /* AppDelegate.m */,
 				BCFB00691DE42DA400E04090 /* ViewController.h */,
 				BCFB006A1DE42DA400E04090 /* ViewController.m */,
+				BCAB93D51F1CA4AE00E6557C /* UIImage+MZImagepProcessing.h */,
+				BCAB93D61F1CA4AE00E6557C /* UIImage+MZImagepProcessing.m */,
 				BCFB006C1DE42DA400E04090 /* Main.storyboard */,
 				BCFB006F1DE42DA400E04090 /* Assets.xcassets */,
 				BCFB00711DE42DA400E04090 /* LaunchScreen.storyboard */,
@@ -261,6 +266,7 @@
 			files = (
 				BCFB00811DE430A700E04090 /* KYBarrageManager.m in Sources */,
 				BCFB006B1DE42DA400E04090 /* ViewController.m in Sources */,
+				BCAB93D71F1CA4AE00E6557C /* UIImage+MZImagepProcessing.m in Sources */,
 				BCFB00841DE4310500E04090 /* KYBarrageModel.m in Sources */,
 				BCFB00871DE4312C00E04090 /* KYBarrageScene.m in Sources */,
 				BCFB00681DE42DA400E04090 /* AppDelegate.m in Sources */,
